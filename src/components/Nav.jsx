@@ -5,7 +5,7 @@ const NavBar = (props) => {
     return (
         <React.Fragment>
             <nav>
-                <div className="nav-wrapper">
+                <div className="nav-wrapper blue darken-3">
                     &nbsp;&nbsp;
                     <Link to={'/'} className="brand-logo">React</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
