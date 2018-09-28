@@ -5,6 +5,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import NavBar from './components/Nav';
+import Post from './components/Posts';
 
 class App extends Component {
     render() {
@@ -13,8 +14,9 @@ class App extends Component {
                 <React.Fragment>
                     <NavBar />
                     <Route exact component={Home} path={'/'} />
-                    <Route exact component={About} path={'/about'} />
-                    <Route exact component={Contact} path={'/contact'} />
+                    <Route  component={About} path={'/about'} />
+                    <Route  component={Contact} path={'/contact'} />
+                    <Route  component={Post} path={'/posts'} />
                 </React.Fragment>
             </BrowserRouter>
         );

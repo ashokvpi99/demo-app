@@ -10,6 +10,7 @@ const NavBar = (props) => {
                     <Link to={'/'} className="brand-logo">React</Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><NavLink to={'/'}>Home</NavLink></li>
+                        <li><NavLink to={'/posts'}>Posts</NavLink></li>
                         <li><NavLink to={'/about'}>About</NavLink></li>
                         <li><NavLink to={'/contact'}>Contact</NavLink></li>
                     </ul>

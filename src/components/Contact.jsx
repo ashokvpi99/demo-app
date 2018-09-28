@@ -1,4 +1,5 @@
 import React from 'react';
+import Hoc from './HOC';
 
 const Contact = (props) => {
     return (
@@ -8,4 +9,4 @@ const Contact = (props) => {
     )
 }
 
-export default Contact;
+export default Hoc(Contact);
