@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import dataService from '../services/dataService';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Posts extends Component {
 
@@ -19,7 +20,7 @@ class Posts extends Component {
 
     render() {
 
-        const { posts } = this.state;
+        const { posts } = this.props;
         
         const PostCollection = posts.length ? posts.map((post) => {
             return (
@@ -38,4 +39,10 @@ class Posts extends Component {
     }
 }
 
-export default Posts;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        posts: state.postState.posts
+    }
+}
+
+export default connect(mapStateToProps)(Posts);

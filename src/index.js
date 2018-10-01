@@ -6,28 +6,30 @@ import reduxLogger from 'redux-logger';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import rootReducer from './reducers/rootReducer';
+import thunk from 'redux-thunk';
 
-const initState = { post : [] };
+// const initState = { post : [] };
 
-function myReducer(state = initState, action) {
+// function myReducer(state = initState, action) {
 
-    if(action.type === 'ADD_POST')
-        return {
-            ...state,
-            post: [...state.post, action.data]
-        }
+//     if(action.type === 'ADD_POST')
+//         return {
+//             ...state,
+//             post: [...state.post, action.data]
+//         }
 
-}
+// }
 
-const Store = createStore(myReducer, applyMiddleware(reduxLogger));
+const Store = createStore(rootReducer, applyMiddleware(reduxLogger, thunk));
 
-Store.dispatch({type: "ADD_POST", data: 'Hello'})
-Store.dispatch({type: "ADD_POST", data: 'World'})
+// Store.dispatch({type: "ADD_POST", data: 'Hello'})
+// Store.dispatch({type: "ADD_POST", data: 'World'})
 
-Store.subscribe(() => {
-    console.log('State Updated');
-    console.log(Store.getState());
-})
+// Store.subscribe(() => {
+//     console.log('State Updated');
+//     console.log(Store.getState());
+// })
 
 ReactDOM.render(<Provider store={Store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
