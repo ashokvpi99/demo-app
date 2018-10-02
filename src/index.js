@@ -8,6 +8,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './reducers/rootReducer';
 import thunk from 'redux-thunk';
+// import createSaga from 'redux-saga';
 
 // const initState = { post : [] };
 
@@ -20,6 +21,12 @@ import thunk from 'redux-thunk';
 //         }
 
 // }
+
+// const saga = createSaga();
+
+//need to import root reducer saga
+
+// saga.run('roorreadcer');
 
 const Store = createStore(rootReducer, applyMiddleware(reduxLogger, thunk));
 
