@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import dataService from '../services/dataService';
 import { Link } from 'react-router-dom';
+import { getPost } from '../actions/post';
 import { connect } from 'react-redux';
 
 class Posts extends Component {
@@ -14,14 +14,12 @@ class Posts extends Component {
     }
 
     componentDidMount() {
-       dataService.get('https://jsonplaceholder.typicode.com/posts')
-       .then((posts) => this.setState({ posts: posts.data.length && posts.data.length > 10 ? posts.data.slice(1,10): posts}));
+        this.props.getPost('https://jsonplaceholder.typicode.com/posts');
     }
 
     render() {
 
         const { posts } = this.props;
-        
         const PostCollection = posts.length ? posts.map((post) => {
             return (
                 <div key={post.id} className="card-panel container white lighten-3">
@@ -43,6 +41,6 @@ const mapStateToProps = (state, ownProps) => {
     return {
         posts: state.postState.posts
     }
-}
+};
 
-export default connect(mapStateToProps)(Posts);
+export default connect(mapStateToProps, { getPost })(Posts);
