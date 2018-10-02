@@ -1,5 +1,6 @@
 $primary-color: $my-brand-color;
-@import 'loaders.css/src/animations/square-spin.scss'
+//noinspection CssUnknownTarget
+@import 'loaders.css/src/animations/square-spin.scss';
 
 .loader-hidden {
   display: none;
