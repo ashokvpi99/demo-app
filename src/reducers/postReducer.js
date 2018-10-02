@@ -1,5 +1,9 @@
 const initState = {
-    posts: []
+    posts: [],
+    post: {},
+    isError: false,
+    isLoading: false,
+    error: null
 };
 
 const postReducer = (state = initState, action) => {
@@ -9,6 +13,24 @@ const postReducer = (state = initState, action) => {
             return {
                 ...state,
                 posts: action.data
+            }
+        }
+        case 'GET_ONE_POST': {
+            return {
+                ...state,
+                post: action.data
+            }
+        }
+        case 'GET_POST_ERROR': {
+            return {
+                ...state,
+                error: action.data
+            }
+        }
+        case 'GET_ONE_POST_ERROR': {
+            return {
+                ...state,
+                error: action.data
             }
         }
         default:

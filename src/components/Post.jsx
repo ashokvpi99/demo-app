@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
-import dataService from '../services/dataService';
+import { connect } from 'react-redux';
+import { getOnePost } from '../actions/post';
 
 class Post extends Component  {
-    constructor(props) {
-        super(props);
-        
-        this.state ={
-            post: null
-        };
-    }
 
     componentDidMount() {
         let postId = this.props.match.params.postId;
-        dataService.get('https://jsonplaceholder.typicode.com/posts/' + postId)
-        .then((post) => this.setState({ post: post.data }));
+        this.props.getOnePost('https://jsonplaceholder.typicode.com/posts/' + postId);
     }
+
     render() {
 
-        const { post } = this.state;
+        const { post } = this.props;
 
         const postId = post ? (<div className={'container card-panel'}>
             <p>{post.title}</p>
@@ -32,4 +26,10 @@ class Post extends Component  {
     }
 }
 
-export default Post;
+const propsFromState = (state, props) => {
+    return {
+        post: state.postState.post
+    }
+};
+
+export default connect(propsFromState, { getOnePost })(Post);

@@ -3,6 +3,6 @@ import postReducer from './postReducer';
 
 const rootReducer = combineReducers({
     postState: postReducer
-})
+});
 
 export default rootReducer;
