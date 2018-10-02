@@ -14,7 +14,7 @@ class Posts extends Component {
     }
 
     componentDidMount() {
-        this.props.getPost('https://jsonplaceholder.typicode.com/posts');
+        this.props.getAllPost('https://jsonplaceholder.typicode.com/posts');
     }
 
     render() {
@@ -37,10 +37,16 @@ class Posts extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const stateToProps = (state, ownProps) => {
     return {
         posts: state.postState.posts
     }
 };
 
-export default connect(mapStateToProps, { getPost })(Posts);
+const triggerAction = () => {
+    return {
+        getAllPost: (url)=> getPost(url)
+    }
+};
+
+export default connect(stateToProps, triggerAction())(Posts);
